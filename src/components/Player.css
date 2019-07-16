@@ -31,3 +31,14 @@ li.player {
   li.player button.plus-button:hover {
     background-color: #eee;
   }
+
+  li.player button.delete-button {
+    flex: 1;
+    border: 1px solid #ccc;
+    font-size: 100%;
+    font-weight: bold;
+    margin: 12px;
+    cursor: pointer;
+    max-width: 70px;
+    height: 35px;
+  }

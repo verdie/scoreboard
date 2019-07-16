@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import Player from './Player';
 import AddPlayer from './AddPlayer'
+import './Scoreboard.css'
 
 export default class Scoreboard extends Component {
     static propTypes = {
@@ -34,7 +35,10 @@ export default class Scoreboard extends Component {
     }
 
     deletePlayer = (id) => {
-      // find player and delete him, use incrementScoreOfPlayer as example
+      const deleteBut = this.state.players.filter((player)=>{
+        return player.id !== id;
+      })
+      this.setState({ players: deleteBut })
     }
     render () {
         // copying the array of players because `.sort()` **mutates!**
