@@ -1,6 +1,9 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Title from './components/Title';
+// import Player from './Player';
+import Scoreboard from './components/Scoreboard'
 
 function App() {
   return (
@@ -19,6 +22,10 @@ function App() {
           Learn React
         </a>
       </header>
+      <main>
+        <Title content = ''/>
+        <Scoreboard content= ''/>
+      </main>
     </div>
   );
 }
