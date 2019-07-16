@@ -41,17 +41,12 @@ export default class Scoreboard extends Component {
       this.setState({ players: deleteBut })
     }
     render () {
-        // copying the array of players because `.sort()` **mutates!**
-        const players_copy = [ ...this.state.players ];
-        // sorting the players
-        players_copy.sort((a, b) => b.score - a.score);
-        // console.log(players_copy); // <!-- add console.log's if you're not sure!
-    
+        this.state.players.slice().sort((a, b) => b.score - a.score);
         return (
           <div className="scoreboard">
             <h1>Scoreboard</h1>
             <ul>
-              {players_copy.map(this.renderPlayer)}
+              {this.state.players.map(this.renderPlayer)}
             </ul>
             <AddPlayer addPlayer={this.addPlayer} />
           </div>
