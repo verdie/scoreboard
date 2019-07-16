@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from "prop-types";
+import './AddPlayer.css'
 
 export default class AddPlayer extends Component {
     static propTypes = {

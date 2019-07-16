@@ -57,7 +57,7 @@ export default class Scoreboard extends Component {
             <ul>
               {players_copy.map(this.renderPlayer)}
             </ul>
-            <AddPlayer addPlayer={this.addPlayer} /><AddPlayer/>
+            <AddPlayer addPlayer={this.addPlayer} />
           </div>
         );
       }
