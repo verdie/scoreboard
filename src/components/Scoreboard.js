@@ -31,19 +31,11 @@ export default class Scoreboard extends Component {
           }
         });
         this.setState({ players: updatedPlayers })
-}
-    // render (){
-    //     return (
-    //     <div className="scoreboard">
-    //     <h1>Scoreboard</h1>
-    //     <ul>
-    //       {this.state.players.map((player) => {
-    //         return <Player name={player.name} score={player.score} key = {player.id}content = '' />
-    //       })}
-    //     </ul>
-    //   </div>
-    //   )
-    // }
+    }
+
+    deletePlayer = (id) => {
+      // find player and delete him, use incrementScoreOfPlayer as example
+    }
     render () {
         // copying the array of players because `.sort()` **mutates!**
         const players_copy = [ ...this.state.players ];
@@ -62,26 +54,27 @@ export default class Scoreboard extends Component {
         );
       }
     
-      renderPlayer = player => {
-        return (
-          <Player
-            id={player.id}
-            name={player.name}
-            score={player.score}
-            key={player.id}
-            incrementScore={this.incrementScoreOfPlayer}
-            content =''
-          />
-        );
+    renderPlayer = player => {
+      return (
+        <Player
+          id={player.id}
+          name={player.name}
+          score={player.score}
+          key={player.id}
+          incrementScore={this.incrementScoreOfPlayer}
+          deletePlayer={this.deletePlayer}
+          content =''
+        />
+      );
     }
     addPlayer = (name) => {
-        const player = {
-          id: Math.round(Math.random()*100000),
-          name,
-          score: 0
-        }
-        this.setState({
-          players: this.state.players.concat(player)
-        })
+      const player = {
+        id: Math.round(Math.random()*100000),
+        name,
+        score: 0
       }
+      this.setState({
+        players: this.state.players.concat(player)
+      })
+    }
 }
