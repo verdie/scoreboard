@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import Player from './Player'
+import Player from './Player';
+import AddPlayer from './AddPlayer'
 
 export default class Scoreboard extends Component {
     static propTypes = {
@@ -12,13 +13,25 @@ export default class Scoreboard extends Component {
 
       this.state = {
         players: [
-          {id : 1, name: 'Arien', score: '2'},
-          {id : 2, name: 'David', score: '5'},
-          {id : 3, name: 'Mimi', score: '4'},
+          {id : 1, name: 'Arien', score: 2},
+          {id : 2, name: 'David', score: 5},
+          {id : 3, name: 'Mimi', score: 4},
         ]
       };
     }
-
+    incrementScoreOfPlayer = (id) => {
+        const updatedPlayers = this.state.players.map((player) => {
+          if (player.id === id) {
+            return {
+              ...player,
+              score: player.score + 1,
+             }
+          } else {
+            return player;
+          }
+        });
+        this.setState({ players: updatedPlayers })
+}
     // render (){
     //     return (
     //     <div className="scoreboard">
@@ -44,6 +57,7 @@ export default class Scoreboard extends Component {
             <ul>
               {players_copy.map(this.renderPlayer)}
             </ul>
+            <AddPlayer addPlayer={this.addPlayer} /><AddPlayer/>
           </div>
         );
       }
@@ -60,4 +74,14 @@ export default class Scoreboard extends Component {
           />
         );
     }
+    addPlayer = (name) => {
+        const player = {
+          id: Math.round(Math.random()*100000),
+          name,
+          score: 0
+        }
+        this.setState({
+          players: this.state.players.concat(player)
+        })
+      }
 }

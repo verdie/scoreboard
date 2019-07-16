@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import './Player.css'
 
 export default class Player extends Component {
     static propTypes = {
@@ -10,7 +11,7 @@ export default class Player extends Component {
     }
       
     handleClick = () => {
-          this.incrementScore(this.props.id);
+          this.props.incrementScore(this.props.id);
     }
       
     render() {
@@ -30,6 +31,7 @@ export default class Player extends Component {
             score={player.score}
             key={player.id}
             incrementScore={this.incrementScoreOfPlayer}
+            content =''
           />
         )
       }
@@ -48,6 +50,5 @@ export default class Player extends Component {
       });
       // Finally, we use `this.setState` to replace the players array
       this.setState({ players: updatedPlayers });
-      }
-    
+    }
 }

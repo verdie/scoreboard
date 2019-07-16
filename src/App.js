@@ -4,6 +4,7 @@ import './App.css';
 import Title from './components/Title';
 // import Player from './Player';
 import Scoreboard from './components/Scoreboard'
+import "./components/Scoreboard.css";
 
 function App() {
   return (
