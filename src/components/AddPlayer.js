@@ -8,10 +8,22 @@ export default class AddPlayer extends Component {
     }  
 
     state = {name:''}
+    
+    validateName(name) {
+        if (name.length >= 2) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        this.props.addPlayer(this.state.name)
+        if (validateName(this.state.name)) {
+          this.props.addPlayer(this.state.name)
+        } else {
+            alert('short') 
+        }
     }
 
   handleChange = (event) => {
@@ -38,4 +50,6 @@ export default class AddPlayer extends Component {
       </div>
     )
   }
+
+
 }
