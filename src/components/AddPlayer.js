@@ -10,7 +10,7 @@ export default class AddPlayer extends Component {
     state = {name:''}
     
     validateName(name) {
-        if (name.length >= 2) {
+        if (name.length > 2) {
             return true;
         } else {
             return false;
@@ -19,37 +19,35 @@ export default class AddPlayer extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault()
-        if (validateName(this.state.name)) {
-          this.props.addPlayer(this.state.name)
+        if (this.validateName(this.state.name)) {
+            this.props.addPlayer(this.state.name)
+            this.setState({name: ''});
         } else {
             alert('short') 
         }
     }
 
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
-  }
+    handleChange = (event) => {
+        this.setState({
+        [event.target.name]: event.target.value
+        })
+    }
 
   render() {
     return (
-      <div className="add-player">
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              onChange={this.handleChange}
-              value={this.state.name}
-            />
-          </label>
-          <input type="submit" value="Add" />
-        </form>
-      </div>
-    )
-  }
-
-
+        <div className="add-player">
+            <form onSubmit={this.handleSubmit}>
+                <label>
+                Name:
+                <input
+                type="text"
+                name="name"
+                onChange={this.handleChange}
+                value={this.state.name}
+                />
+                </label>
+                <input type="submit" value="Add" />
+            </form>
+        </div>
+    )}
 }

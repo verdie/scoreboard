@@ -13,6 +13,12 @@ export default class Player extends Component {
     handleClick = () => {
           this.props.incrementScore(this.props.id);
     }
+
+    onDelete =() =>{
+        this.setState((prevState) => ({
+            players: prevState.players.filter(player => player.id !== id),
+        }))
+    }
       
     render() {
         return (
@@ -20,19 +26,20 @@ export default class Player extends Component {
                 <p className="name">{ this.props.name }</p>
                 <p className="score">{ this.props.score }</p>
                 <button className="plus-button" onClick={this.handleClick}>+</button>
+                <button className="delete-button" onClick={this.player.onDelete(this.player.id)}>delete</button>
             </li>
         )
     }
     renderPlayer = player => {
         return (
-          <Player
-            id={player.id}
-            name={player.name}
-            score={player.score}
-            key={player.id}
-            incrementScore={this.incrementScoreOfPlayer}
-            content =''
-          />
+            <Player
+                id={player.id}
+                name={player.name}
+                score={player.score}
+                key={player.id}
+                incrementScore={this.incrementScoreOfPlayer}
+                content =''
+            />
         )
       }
     
